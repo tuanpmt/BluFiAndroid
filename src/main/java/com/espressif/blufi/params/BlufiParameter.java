@@ -1,4 +1,4 @@
-package blufi.espressif.params;
+package com.espressif.blufi.params;
 
 public interface BlufiParameter {
     int OP_MODE_NULL = 0x00;

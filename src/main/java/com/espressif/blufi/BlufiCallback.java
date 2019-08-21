@@ -2,9 +2,9 @@ package com.espressif.blufi;
 
 import java.util.List;
 
-import blufi.espressif.response.BlufiScanResult;
-import blufi.espressif.response.BlufiStatusResponse;
-import blufi.espressif.response.BlufiVersionResponse;
+import com.espressif.blufi.response.BlufiScanResult;
+import com.espressif.blufi.response.BlufiStatusResponse;
+import com.espressif.blufi.response.BlufiVersionResponse;
 
 public abstract class BlufiCallback {
     public static final int STATUS_SUCCESS = 0;
@@ -20,10 +20,6 @@ public abstract class BlufiCallback {
      */
     public boolean onGattNotification(BlufiClient client, int pkgType, int subType, byte[] data) {
         return false;
-    }
-
-    public int onGattSendOut(BlufiClient client, byte[] data) {
-        return 0;
     }
 
     /**
@@ -109,5 +105,13 @@ public abstract class BlufiCallback {
      * @param data received
      */
     public void onReceiveCustomData(BlufiClient client, int status, byte[] data) {
+    }
+
+    /**
+     * Callback invoked when data out
+     * @param client
+     * @param data
+     */
+    public void onBluFiData(BlufiClient client, byte[] data) {
     }
 }

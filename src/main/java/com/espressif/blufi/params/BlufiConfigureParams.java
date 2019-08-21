@@ -1,7 +1,10 @@
-package blufi.espressif.params;
+package com.espressif.blufi.params;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class BlufiConfigureParams implements Serializable {
     private int mOpMode;

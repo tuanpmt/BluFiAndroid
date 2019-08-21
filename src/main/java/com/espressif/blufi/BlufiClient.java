@@ -6,56 +6,19 @@ import android.bluetooth.BluetoothGattCallback;
 
 import java.util.List;
 
-import blufi.espressif.params.BlufiConfigureParams;
-import blufi.espressif.response.BlufiStatusResponse;
-import blufi.espressif.response.BlufiVersionResponse;
+import com.espressif.blufi.params.BlufiConfigureParams;
+import com.espressif.blufi.response.BlufiStatusResponse;
+import com.espressif.blufi.response.BlufiVersionResponse;
 
 public class BlufiClient {
-    public static final String VERSION = "2.2.0";
-
     private BlufiClientImpl mImpl;
 
     public BlufiClient() {
         mImpl = new BlufiClientImpl(this);
     }
 
-    public BlufiClient(BluetoothGatt gatt, BluetoothGattCharacteristic writeCharact,
-                       BluetoothGattCharacteristic notiCharact, BlufiCallback callback) {
-        mImpl = new BlufiClientImpl(this, gatt, writeCharact, notiCharact, callback);
-    }
-
-    /**
-     * Set BluetoothGatt.
-     *
-     * @param gatt Device BLE gatt
-     */
-    public void setBluetoothGatt(BluetoothGatt gatt) {
-        mImpl.setBluetoothGatt(gatt);
-    }
-
-    /**
-     * @return BluetoothGatt
-     */
-    public BluetoothGatt getBluetoothGatt() {
-        return mImpl.getBluetoothGatt();
-    }
-
-    /**
-     * Set write BluetoothGattCharacteristic
-     *
-     * @param characteristic App send data to Device
-     */
-    public void setWriteGattCharacteristic(BluetoothGattCharacteristic characteristic) {
-        mImpl.setWriteGattCharacteristic(characteristic);
-    }
-
-    /**
-     * Set notification BluetoothGattCharacteristic
-     *
-     * @param characteristic Device send data to App
-     */
-    public void setNotificationGattCharacteristic(BluetoothGattCharacteristic characteristic) {
-        mImpl.setNotificationGattCharacteristic(characteristic);
+    public BlufiClient(BlufiCallback callback) {
+        mImpl = new BlufiClientImpl(this, callback);
     }
 
     /**
@@ -81,17 +44,9 @@ public class BlufiClient {
      * @param gatt BluetoothGatt
      * @param characteristic BluetoothGattCharacteristic
      */
-    public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-        mImpl.onCharacteristicChanged(gatt, characteristic);
-    }
-
-    /**
-     * Call for get data from Notify chara
-     * @param data
-     */
-    public void onGetDataFromNotifyCharacteristic(byte[] data) {
-        mImpl.onGetDataFromNotifyCharacteristic(data);
-    }
+//    public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+//        mImpl.onCharacteristicChanged(gatt, characteristic);
+//    }
 
     /**
      * Call this function in
@@ -101,9 +56,9 @@ public class BlufiClient {
      * @param characteristic BluetoothGattCharacteristic
      * @param status gatt status
      */
-    public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-        mImpl.onCharacteristicWrite(gatt, characteristic, status);
-    }
+//    public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+//        mImpl.onCharacteristicWrite(gatt, characteristic, status);
+//    }
 
     /**
      * Set the maximum length of each packet of data, the excess part will be subcontracted.
@@ -154,6 +109,14 @@ public class BlufiClient {
      */
     public void requestDeviceWifiScan() {
         mImpl.requestDeviceWifiScan();
+    }
+
+    public void writeDone() {
+        mImpl.writeDone();
+    }
+
+    public void inputData(byte[] data) {
+        mImpl.inputData(data);
     }
 
     /**

@@ -1,4 +1,4 @@
-package blufi.espressif.response;
+package com.espressif.blufi.response;
 
 import java.util.Locale;
 
