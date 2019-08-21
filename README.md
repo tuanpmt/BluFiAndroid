@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.tuanpmt:BluFiAndroid:1.0.1'
+    implementation 'com.github.tuanpmt:BluFiAndroid:1.0.3'
 }
   
 ```

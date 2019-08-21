@@ -13,14 +13,13 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
-
+    compileSdkVersion 23
 
     defaultConfig {
-        minSdkVersion 27
-        targetSdkVersion 28
+        minSdkVersion 16
+        targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -32,7 +31,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
